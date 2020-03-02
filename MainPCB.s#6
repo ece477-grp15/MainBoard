@@ -9,6 +9,20 @@
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
@@ -1374,6 +1388,58 @@ This footprint was designed to help hold the alignment of a through-hole compone
 </deviceset>
 </devicesets>
 </library>
+<library name="supply1" urn="urn:adsk.eagle:library:371">
+<description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
+ GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
+ Please keep in mind, that these devices are necessary for the
+ automatic wiring of the supply signals.&lt;p&gt;
+ The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
+ In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+</packages>
+<symbols>
+<symbol name="GND" urn="urn:adsk.eagle:symbol:26925/1" library_version="1">
+<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
+</symbol>
+<symbol name="+5V" urn="urn:adsk.eagle:symbol:26929/1" library_version="1">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="+5V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="GND" urn="urn:adsk.eagle:component:26954/1" prefix="GND" library_version="1">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="+5V" urn="urn:adsk.eagle:component:26963/1" prefix="P+" library_version="1">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="+5V" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1388,6 +1454,9 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <part name="U$1" library="SeniorDesignParts" deviceset="STM32F410R8T6" device=""/>
 <part name="J1" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" deviceset="CONN_16" device="1X16_NO_SILK" package3d_urn="urn:adsk.eagle:package:38249/1"/>
 <part name="FRAME2" library="SparkFun-Aesthetics" library_urn="urn:adsk.eagle:library:507" deviceset="FRAME-A4L" device=""/>
+<part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1411,10 +1480,82 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <attribute name="LAST_DATE_TIME" x="463.55" y="6.35" size="2.286" layer="94" font="vector"/>
 <attribute name="SHEET" x="477.52" y="1.27" size="2.54" layer="94" font="vector"/>
 </instance>
+<instance part="GND1" gate="1" x="332.74" y="96.52">
+<attribute name="VALUE" x="330.2" y="93.98" size="1.778" layer="96"/>
+</instance>
+<instance part="P+1" gate="1" x="350.52" y="119.38">
+<attribute name="VALUE" x="347.98" y="114.3" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="GND2" gate="1" x="307.34" y="147.32">
+<attribute name="VALUE" x="304.8" y="144.78" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
+<net name="GND" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="1"/>
+<wire x1="325.12" y1="106.68" x2="332.74" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="332.74" y1="106.68" x2="332.74" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="16"/>
+<wire x1="325.12" y1="144.78" x2="325.12" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="325.12" y1="152.4" x2="307.34" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="307.34" y1="152.4" x2="307.34" y2="149.86" width="0.1524" layer="91"/>
+<pinref part="GND2" gate="1" pin="GND"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="2"/>
+<wire x1="325.12" y1="109.22" x2="327.66" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="327.66" y1="109.22" x2="350.52" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="350.52" y1="109.22" x2="350.52" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<pinref part="J1" gate="G$1" pin="3"/>
+<wire x1="325.12" y1="111.76" x2="327.66" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="327.66" y1="111.76" x2="327.66" y2="109.22" width="0.1524" layer="91"/>
+<junction x="327.66" y="109.22"/>
+</segment>
+</net>
+<net name="RS" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="4"/>
+<wire x1="325.12" y1="114.3" x2="335.28" y2="114.3" width="0.1524" layer="91"/>
+<label x="330.2" y="114.3" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CSB" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="12"/>
+<wire x1="325.12" y1="134.62" x2="335.28" y2="134.62" width="0.1524" layer="91"/>
+<label x="330.2" y="134.62" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SCLK" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="13"/>
+<wire x1="325.12" y1="137.16" x2="335.28" y2="137.16" width="0.1524" layer="91"/>
+<label x="327.66" y="137.16" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SID" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="14"/>
+<wire x1="325.12" y1="139.7" x2="335.28" y2="139.7" width="0.1524" layer="91"/>
+<label x="330.2" y="139.7" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="15"/>
+<wire x1="325.12" y1="142.24" x2="342.9" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="342.9" y1="142.24" x2="342.9" y2="154.94" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
